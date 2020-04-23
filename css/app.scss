@@ -1,0 +1,236 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '../templates/metronic/css/login-4';
+@import '../templates/metronic/mt3/sass/style';
+@import '../templates/metronic/vendor/flaticon/flaticon.css';
+@import '../templates/metronic/vendor/line-awesome/css/line-awesome.css';
+@import '../templates/metronic/vendor/flaticon2/flaticon.css';
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
+@import "~datatables.net-fixedcolumns-bs4/css/fixedColumns.bootstrap4.css";
+@import "~bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
+@import "~select2/dist/css/select2.css";
+@import "~toastr/build/toastr.css";
+@import "~dropzone/src/dropzone";
+
+.text-black{
+  color: #333;
+}
+
+body{
+  font-size: 1.1rem;
+}
+
+
+.text-danger{
+    color: #cd1407 !important;
+}
+
+#btn-new-reservation{
+  &:hover,&:active{
+    color: #fff !important;
+  }
+}
+
+//.container-dt{
+//  &>.top{
+//    position: relative;
+//    .dataTables_processing{
+//      position: absolute;
+//      width: 100%;
+//      height: 100%;
+//      z-index: 888;
+//      text-align: center;
+//      background: #3c8dbc9e;
+//      color: #fff;
+//      font-size: 2em;
+//      display: flex;
+//      justify-content: center;
+//      align-items: center;
+//      padding-top: 5%;
+//    }
+//  }
+//}
+
+span.validation-error:before{
+  content: "\f071";
+  margin-right: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-block;
+  font-family: FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.p-1{
+  padding: 1.25rem;
+}
+
+.p-2{
+  padding: 2.25rem;
+}
+
+.control-sidebar{
+  overflow-x: hidden;
+  padding-bottom: 0 !important;
+  z-index: 999;
+  &.control-sidebar-open{
+    width: 350px !important;
+  }
+  //right: -300px !important;
+}
+
+.navbar-nav>.user-menu>.dropdown-menu{
+  width: auto !important;
+}
+
+.checkbox-inline, .radio-inline{
+  margin-right: 8px;
+}
+
+hr{
+  border-top: 1px solid #ccc !important;
+}
+
+.dataTables_length{
+  label *{
+    display: inline-block;
+    max-width: 40%;
+  }
+}
+
+.reservation-details .form-group span{
+  display: block;
+}
+
+#calendar .fc-event, #rooms_calendar .fc-event{
+  cursor: pointer;
+}
+
+.fc-event, .fc-event-dot{
+  .fc-title{
+    color: #fff !important;
+  }
+}
+
+
+.record-details{
+  .record-value{
+    display: block;
+    margin-bottom: 20px;
+  }
+  .detail-label-badge{
+    font-size: 1.4rem;
+    width: 100%;
+    display: block;
+    margin-bottom: 25px;
+    padding: 10px 0;
+    border-radius: 0 !important;
+  }
+  label {
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+.label-status{
+  display: block !important;
+}
+
+table.dataTable {
+  th {
+    color: #333;
+    font-weight: 600;
+  }
+  td {
+    color: #333;
+    font-weight: 400;
+  }
+
+  &:not(.no-center-first-column) tr{
+    td:first-child{
+      text-align: center;
+    }
+  }
+
+  tr.selected td, tr.selected th{
+    background-color: #5867dd  !important;
+    color: #fff !important;
+    .btn-clean i{
+      color: #fff !important;
+    }
+    .btn-clean:hover i{
+      color: #7691ff !important;
+    }
+  }
+
+  td.dataTables_empty{
+    height: 100px;
+  }
+
+  &.table-select-tool{
+    cursor: pointer;
+  }
+
+}
+
+.DTFC_RightBodyLiner{
+  overflow-x: hidden;
+}
+
+.dataTables_wrapper .dataTables_scroll{
+  margin-top: 0 !important;
+}
+
+.form-group label{
+  font-size: 1.12rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.datetimepicker table tr td.disabled, .datetimepicker table tr td.disabled:hover{
+  color: #c5d0ff  !important;
+}
+
+
+
+.form-control{
+  background-color: #f0f0f070;
+}
+
+.dropzone{
+  border: 2px dashed #e0e0e0;
+  &.dz-drag-hover{
+    background: #384AD7;
+  }
+  .dz-preview{
+    &.dz-success{
+      .dz-image{
+        background: #009688 !important;
+      }
+    }
+    &.dz-error{
+      .dz-image{
+        background: #f44336 !important;
+      }
+    }
+    .dz-image{
+      border-radius: 0 !important;
+      width: 150px;
+    }
+    .dz-details{
+      padding: 0.5em !important;
+      //.dz-size{
+      //  margin-bottom: 0.4em !important;
+      //  font-size: 14px !important;
+      //}
+      .dz-filename{
+        white-space: normal;
+      }
+    }
+  }
+  .dz-preview.dz-file-preview{
+    background: #e4e4e4;
+    border-radius: 0;
+  }
+}

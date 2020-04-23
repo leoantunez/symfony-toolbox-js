@@ -1,0 +1,17 @@
+{
+  "name": "@codyas/symfony-toolbox",
+  "version": "1.0.0",
+  "description": "A set of UI tools for supporting Symfony app development through Webpack Encore",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leoantunez/symfony-toolbox-js.git"
+  },
+  "author": "Leonardo D. Antunez <leonardo.d.antunez@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leoantunez/symfony-toolbox-js/issues"
+  },
+  "homepage": "https://github.com/leoantunez/symfony-toolbox-js#readme"
+}
