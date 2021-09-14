@@ -128,6 +128,90 @@ window.App = {
         App.initDropdown($scope);
         App.initTooltips($scope);
     },
+
+    appendForm: function ($triggerEl, cb, protoName, list) {
+        list = list ? list : $($triggerEl.attr('data-list'));
+        let counter = list.data('widget-counter') | list.children().length;
+        let widgetTags = list.attr('data-widget-tags');
+        protoName = protoName ? protoName : '__name__';
+        if (!counter) {
+            counter = list.children().length;
+        }
+        let newWidget = $triggerEl.data('prototype');
+        let re = new RegExp(protoName, "g");
+        newWidget = newWidget.replace(re, counter);
+        widgetTags = widgetTags.replace(re, counter);
+        counter++;
+        list.data('widget-counter', counter);
+        let newElem = $(widgetTags).html(newWidget);
+        let counterClass = 'odd';
+        if (counter % 2 === 0) {
+            counterClass = 'even';
+        }
+        newElem.addClass(counterClass).addClass('d-none');
+        if ($triggerEl.data('policy') === 'insert-before') {
+            $triggerEl.parents('li').before(newElem)
+        } else {
+            newElem.appendTo(list);
+            newElem.removeClass('d-none')
+        }
+        cb($(newElem))
+    },
+
+    initValidation: function ($form, handlerCb, successCb, failureCb) {
+        let _this = this;
+        $form.validate({
+            ignore: ":not(:visible),:disabled",
+            errorElement: "span",
+            errorPlacement: function (error, element) {
+                error.addClass("mt-2 mb-2 text-danger validation-error");
+                if (element.prop("type") === "checkbox") {
+                    error.insertAfter(element.parents(".checkbox"));
+                } else if (element.prop("type") === "radio") {
+                    error.insertAfter(element.parents(".icheck"));
+                } else if (element.is('select') && (element.hasClass('select2') || element.hasClass('select2-ph'))) {
+                    error.insertAfter(element.siblings(".select2"));
+                } else if (element.is('textarea') && element.hasClass('lc-ckeditor')) {
+                    error.insertAfter(element.siblings(".ck-editor"));
+                } else if (element.is('input') && element.parents('.input-group').length > 0) {
+                    error.insertAfter(element.parents('.input-group'));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass("is-invalid").removeClass("is-valid");
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).addClass("is-valid").removeClass("is-invalid");
+            },
+            submitHandler: function (form) {
+                if (handlerCb) {
+                    handlerCb(form)
+                } else {
+                    $.LoadingOverlay("show");
+                    $.ajax(
+                        {
+                            url: $(form).prop('action'),
+                            method: 'post',
+                            data: $(form).serialize(),
+                            success: function (res) {
+                                successCb(res);
+                            },
+                            error: function (res) {
+                                failureCb(res);
+                            },
+                            complete: function () {
+                                $.LoadingOverlay("hide");
+                            }
+                        }
+                    );
+                }
+                return false;
+            }
+
+        });
+    },
 };
 App.initComponents();
 
