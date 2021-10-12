@@ -39,6 +39,7 @@ window.App = {
         $scope.find('.widget-datepicker').each(function (index) {
             let changes = $(this).data('dp-defines');
             let definedBy = $(this).data('dp-defined');
+            let format = $(this).data('dpFormat') ? $(this).data('dpFormat') : 'M/dd/yyyy';
 
             if(changes !== undefined){
                 $(this).on('change', function(){
@@ -50,13 +51,13 @@ window.App = {
 
             if($(this).hasClass('future-disabled')){
                 $(this).datepicker({
-                    format: 'M/dd/yyyy',
+                    format: format,
                     endDate: new Date()
                 })
             }else{
                 let startDate = definedBy !== undefined ? App.getStartDateForDefiner($('#'+definedBy)) : null;
                 $(this).datepicker({
-                    format: 'M/dd/yyyy',
+                    format: format,
                     startDate: startDate
                 })
             }
@@ -95,9 +96,10 @@ window.App = {
         });
     },
     getStartDateForDefiner: function(definerCmp){
-        let checkInDate = moment(definerCmp.val(), 'MMM/DD/YYYY');
+        const format = definerCmp.data('dpMomentFormat') ? definerCmp.data('dpMomentFormat') : 'MMM/DD/YYYY';
+        let checkInDate = moment(definerCmp.val(), format);
         checkInDate.add('1','days');
-        return checkInDate.format('MMM/DD/YYYY');
+        return checkInDate.format(format);
     },
     getStartDateTimeForDefiner: function(definerCmp){
         let checkInDate = moment(definerCmp.val(), 'MMM/DD/YYYY hh:ii');

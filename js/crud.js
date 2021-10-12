@@ -239,7 +239,11 @@ CrudManager.prototype = {
                     _this.$table.trigger('record_removed', [_this.dt]);
                     toastr.success('The record has been removed.')
                 }).fail(function (res) {
-                    Swal.fire('Oops!', res.responseJSON.msg, 'error');
+                    if (res.responseJSON.msg !== undefined) {
+                        Swal.fire('Oops!', res.responseJSON.msg, 'error');
+                    } else {
+                        Swal.fire('Oops!', 'Something went wrong, please try again later.', 'error');
+                    }
                 }).always(function () {
                     $.LoadingOverlay("hide")
                 })
