@@ -1,7 +1,4 @@
 function CrudManager($scope, config) {
-    if (!$scope) {
-        $scope = $('.crud-scope');
-    }
     this.$newRecordBtn = $scope.find('.btn-new-record');
     this.$formModal = $('#modal-form');
     this.$filterModal = $('#filter-form');
@@ -375,7 +372,12 @@ CrudManager.prototype = {
 };
 
 (function () {
-    (new CrudManager()).init();
+    const defaultScope = '.crud-scope';
+    $scope = $(defaultScope);
+    if ( ! $scope.length ) {
+        (new CrudManager($scope)).init();
+    }
+
 })(jQuery, window, document);
 
 module.exports = CrudManager;
