@@ -374,7 +374,7 @@ CrudManager.prototype = {
 (function () {
     const defaultScope = '.crud-scope';
     $scope = $(defaultScope);
-    if ( ! $scope.length ) {
+    if ( $scope.length ) {
         (new CrudManager($scope)).init();
     }
 
