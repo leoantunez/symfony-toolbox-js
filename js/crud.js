@@ -193,12 +193,12 @@ CrudManager.prototype = {
         _this.$formModal.delegate(_this.collectionRemoveBtn, 'click', function (e) {
             let item = $(this);
             Swal.fire({
-                title: el.data('confirmation-msg-title'),
-                text: el.data('confirmation-msg-desc'),
+                title: item.data('confirmation-msg-title'),
+                text: item.data('confirmation-msg-desc'),
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonText: el.data('confirmation-msg-btn-ok'),
-                cancelButtonText: el.data('confirmation-msg-btn-cancel')
+                confirmButtonText: item.data('confirmation-msg-btn-ok'),
+                cancelButtonText: item.data('confirmation-msg-btn-cancel')
             }).then(function (confirmed) {
                 if (confirmed.value) {
                     _this.removeCollectionItem(item);
