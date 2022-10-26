@@ -86,9 +86,9 @@ CrudManager.prototype = {
             }
         });
         _this.$formFilter.delegate('input', 'keypress', function (e) {
-            e.preventDefault();
             let $form = _this.$formModal.find('form');
             if (e.which === 13) {
+                e.preventDefault();
                 _this.dt.ajax.reload();
                 _this.$filterModal.modal('hide');
             }
