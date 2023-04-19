@@ -141,7 +141,10 @@ CrudManager.prototype = {
                         {
                             url: $(form).prop('action'),
                             method: 'post',
-                            data: $(form).serialize(),
+                            contentType: false,
+                            cache: false,
+                            processData: false,
+                            data: new FormData(form),
                             success: function (res) {
                                 _this.dt.ajax.reload();
                                 _this.$formModal.modal('hide');
